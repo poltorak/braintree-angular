@@ -25,14 +25,14 @@ app.get('/client-token', function(req, res) {
       if (err.name === 'authenticationError') {
         console.error('Please fill in examples/server.js with your credentials from Account->API Keys in your Sandbox dashboard: https://sandbox.braintreegateway.com/');
         console.error('Using a dummy client token... this may or may not work');
-        res.send(dummyClientToken);
+        res.send({token: dummyClientToken});
       } else {
         console.error(err);
         res.send(err);
       }
     } else {
       var clientToken = response.clientToken
-      res.send(clientToken);
+      res.send({token: clientToken});
     }
   });
 });

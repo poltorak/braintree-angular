@@ -20,8 +20,8 @@ function braintreeFactory(clientTokenPath, $http) {
 
   $braintree.setupDropin = function(options) {
     getClientToken()
-      .success(function(token) {
-        braintree.setup(token, 'dropin', options);
+      .success(function(result) {
+        braintree.setup(result.token, 'dropin', options);
       })
       .error(function(data, status) {
         console.error('error fetching client token at '+clientTokenPath, data, status);
@@ -30,8 +30,8 @@ function braintreeFactory(clientTokenPath, $http) {
 
   $braintree.setupPayPal = function(options) {
     getClientToken()
-      .success(function(token) {
-        braintree.setup(token, 'paypal', options);
+      .success(function(result) {
+        braintree.setup(result.token, 'paypal', options);
       })
       .error(function(data, status) {
         console.error('error fetching client token at '+clientTokenPath, data, status);
